@@ -27,3 +27,27 @@ let user: { name: string; age: number } =
 };
 ```
 
+### Metody uruchamiania TypeScript:
+
+#### Uruchamianie kodu TypeScript za pomocą `tsc + node`:
+
+1. Zainstaluj TypeScript: `npm install -g typescript`.
+2. Skompiluj plik TypeScript (.ts) do JavaScript (.js): `tsc nazwa.ts`.
+3. Uruchom skompilowany plik w Node.js: `node nazwa.js`.
+
+#### Uruchamianie kodu TypeScript bezpośrednio za pomocą `ts-node`:
+
+1. Zainstaluj TS-node: `npm install -g ts-node`.
+2. Uruchom plik TypeScript bezpośrednio: `ts-node nazwa.ts`.
+
+#### `TypeScript Playground`:
+
+1. Otwórz TypeScript Playground: `https://www.typescriptlang.org/es/play`.
+2. Wklej kod TypeScript.
+3. Wynik pojawi się automatycznie w sekcji `JavaScript Output`.
+
+#### Wybór:
+
+- Do wydajnych aplikacji: `tsc + node` (szybsze uruchamianie i lepsza kompatybilność).
+- Do szybkiego testowania: `ts-node` (brak potrzeby kompilacji, wygoda).
+- Do eksperymentów i nauki: _TypeScript Playground_ (intuicyjne podglądanie zmian).
