@@ -51,3 +51,49 @@ let user: { name: string; age: number } =
 - Do wydajnych aplikacji: `tsc + node` (szybsze uruchamianie i lepsza kompatybilność).
 - Do szybkiego testowania: `ts-node` (brak potrzeby kompilacji, wygoda).
 - Do eksperymentów i nauki: _TypeScript Playground_ (intuicyjne podglądanie zmian).
+
+### Ustawienia kompilatora TypeScript:
+
+Aby upewnić się, że TypeScript wykrywa brakujące typy i potencjalne błędy, projekt został skonfigurowany z użyciem rygorystycznych ustawień. Plik `tsconfig.json` zawiera opcje takie jak `strict: true` i `noImplicitAny`, które wymuszają jawne określanie typów i poprawiają jakość kodu. Dzięki temu kompilator ostrzega przed błędami, zanim kod zostanie uruchomiony.
+
+#### Struktura pliku `tsconfig.json`:
+
+`tsconfig.json` to plik konfiguracyjny dla TypeScript, który określa sposób kompilacji kodu. Umożliwia dostosowanie różnych opcji, takich jak wersja ECMAScript, sposób obsługi modułów, ścisłe sprawdzanie typów czy katalogi źródłowe i docelowe. 
+
+**Kiedy tsconfig.json jest niezbędny?**
+- Gdy chcemy  korzystać z kompilatora TypeScript (`tsc`) do budowania projektu.
+- Jeśli chcemy, aby kompilator automatycznie sprawdzał błędy typów.
+- W większych projektach, gdzie potrzebna jest organizacja kodu (np. określenie katalogów źródłowych i docelowych).
+- Gdy chcemy korzystać z zaawansowanych funkcji TS, takich jak `strictNullChecks` czy `esModuleInterop`.
+
+#### Omówienie przykładowej struktury pliku `tsconfig.json`:
+
+```typescript
+{
+  "compilerOptions": 
+  {
+    "target": "ES6",               
+    "module": "CommonJS",          
+    "strict": true,                
+    "noImplicitAny": true,         
+    "strictNullChecks": true,      
+    "outDir": "./dist",           
+    "rootDir": "./src",           
+    "esModuleInterop": true,       
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true
+  },
+  "include": ["src"]
+}
+```
+
+- `"strict": true` – włącza wszystkie rygorystyczne sprawdzenia typów (równoważne włączeniu m.in. `noImplicitAny`, `strictNullChecks` itd.).
+- `"noImplicitAny": true` – wymusza jawne deklarowanie typów.
+- `"strictNullChecks": true` – zapobiega przypisywaniu `null` i `undefined` do innych typów.
+- `"target": "ES6"` – określa wersję ECMAScript, do której TypeScript ma kompilować kod.
+- `"module": "CommonJS"` – przydatne w środowisku Node.js.
+- `"outDir": "./dist"` – określa katalog, do którego trafi skompilowany kod.
+- `"rootDir": "./src"` – wskazuje katalog, w którym znajdują się pliki TypeScript.
+- `"esModuleInterop": true` – ułatwia importowanie modułów CommonJS i ES6.
+- `"forceConsistentCasingInFileNames": true` – zapobiega problemom z wielkością liter w nazwach plików (ważne np. w systemach plików rozróżniających wielkość liter).
+- `"skipLibCheck": true` – pomija sprawdzanie plików definicji `.d.ts`, co przyspiesza kompilację.

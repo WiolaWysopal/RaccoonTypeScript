@@ -1,0 +1,14 @@
+{
+    "compilerOptions": 
+    {
+      "target": "ES6",               
+      "module": "CommonJS",          
+      "strict": true,                
+      "noImplicitAny": true,         
+      "strictNullChecks": true,                
+      "esModuleInterop": true,       
+      "forceConsistentCasingInFileNames": true,
+      "skipLibCheck": true
+    }
+}
+  
