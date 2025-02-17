@@ -97,3 +97,22 @@ Aby upewnić się, że TypeScript wykrywa brakujące typy i potencjalne błędy,
 - `"esModuleInterop": true` – ułatwia importowanie modułów CommonJS i ES6.
 - `"forceConsistentCasingInFileNames": true` – zapobiega problemom z wielkością liter w nazwach plików (ważne np. w systemach plików rozróżniających wielkość liter).
 - `"skipLibCheck": true` – pomija sprawdzanie plików definicji `.d.ts`, co przyspiesza kompilację.
+
+## Typowanie statyczne w TS:
+
+TypeScript zapewnia statyczne typowanie, które pozwala unikać błędów już na etapie kompilacji. W praktycznych zastosowaniach, takich jak zarządzanie profilami użytkowników, pomaga w poprawnym definiowaniu i walidacji danych.
+
+Wzór typowania statycznego:
+
+```typescript
+nazwa_zmiennej: typ | null | undefined = wartość_domyslna;
+```
+
+Przykłady:
+
+```typescript
+let age: number = 25;                // liczba całkowita
+let name: string | undefined;        // string lub niezainicjalizowana wartość
+let accountStatus: boolean | null;   // boolean lub brak wartości (null)
+
+```
