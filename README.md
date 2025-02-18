@@ -122,5 +122,35 @@ let accountStatus: boolean | null;   // boolean lub brak wartości (null)
 - Klasy tworzy się za pomocą `class`, umożliwiając definiowanie pól, metod i konstruktorów.
 - Enumy (_enumerations_) to typy w TypeScript, które pozwalają przypisać czytelne nazwy stałym wartościom liczbowym lub tekstowym. Tworzy się je za pomocą `enum`, definiując zestaw nazwanych wartości liczbowych lub tekstowych.
 
+## Rozwiązywanie Problemów z `any`, `object`, `unknown`, `never`:
+
+Aby zapewnić bezpieczeństwo typów przy pobieraniu danych z API, należy określić oczekiwany kształt zwracanego obiektu za pomocą interfejsu lub typu i stosować parsowanie danych z kontrolą błędów. Zastępowanie typu `any` bardziej precyzyjnymi typami, takimi jak `union`, `unknown` czy generyki, poprawia bezpieczeństwo kodu i czytelność. Funkcja logująca błędy, która rzuca wyjątek, powinna mieć typ `never`, co wskazuje, że nigdy nie zwraca wartości i zawsze kończy działanie przez błąd. Aby upewnić się, że zmienna `object` ma konkretny typ, można używać `type guards`, operatora `as`oraz interfejsów, co pozwala na bezpieczne sprawdzanie i przekształcanie typów w kodzie.
+
+- `Union` pozwala określić, że zmienna może mieć jeden z kilku typów, np. `string | number`.
+- `Unknown` to bezpieczniejsza alternatywa dla `any`, wymagająca sprawdzenia typu przed użyciem.
+- Generyki umożliwiają tworzenie elastycznych i wielokrotnego użytku struktur, które działają z różnymi typami.
+- Typ `never` oznacza wartość, która nigdy nie zostanie zwrócona, np. w funkcjach rzucających wyjątki.
+- `Type guards` to techniki sprawdzania typu w czasie działania, np. `typeof` lub `instanceof`, aby poprawnie obsługiwać różne przypadki.
+- Operator `as` służy do rzutowania typu, czyli informowania kompilatora, że dana wartość ma określony typ.
+
 ## Wnioskowanie typów:
+
+Wnioskowanie typów (`type inference`) w TypeScript polega na tym, że kompilator automatycznie określa typy zmiennych, zwracanych wartości i innych elementów kodu na podstawie ich kontekstu.
+
+Przykład:
+
+```typescript
+// Jawna deklaracja:
+function add(a: number, b: number): number 
+{
+    return a + b;
+}
+
+// Wnioskowanie typów - funkcja na podstawie przekazanych parametrów
+// określa zwracany typ:
+function nonExpliciteAdd(a: number, b: number)
+{
+    return a + b;
+}
+```
 
