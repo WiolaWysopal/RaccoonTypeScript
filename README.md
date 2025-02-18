@@ -146,11 +146,66 @@ function add(a: number, b: number): number
     return a + b;
 }
 
-// Wnioskowanie typów - funkcja na podstawie przekazanych parametrów
-// określa zwracany typ:
+// Wnioskowanie typów - funkcja na podstawie przekazanych parametrów określa zwracany typ:
 function nonExpliciteAdd(a: number, b: number)
 {
     return a + b;
 }
 ```
 
+## Rozwiązywanie problemów związanych ze zgodnością typów:
+
+Rozważmy przykład:
+
+```typescript
+// Ogólny typ Task
+interface Task 
+{
+    title: string;
+    description: string;
+    completed: boolean;
+  }
+  
+  // Bardziej szczegółowy typ AdminTask z dodatkowymi właściwościami
+  interface AdminTask extends Task 
+  {
+    assignedTo: string;
+    priority: "low" | "medium" | "high";
+  }
+  
+  // Przykład poprawnego przypisania
+  const generalTask: Task = 
+  {
+    title: "Zadanie ogólne",
+    description: "Opis zadania",
+    completed: false,
+  };
+  
+  const adminTask: AdminTask = 
+  {
+    title: "Zadanie administracyjne",
+    description: "Zarządzanie systemem",
+    completed: false,
+    assignedTo: "Admin",
+    priority: "high",
+  };
+  
+  // Poprawne przypisanie adminTask do zmiennej typu Task (zgodność strukturalna)
+  const taskAsGeneral: Task = adminTask;
+  
+  // Błąd: próba przypisania Task do AdminTask (brakuje assignedTo i priority)
+  // const invalidAdminTask: AdminTask = generalTask; // TypeScript zgłosi błąd
+  
+  console.log(taskAsGeneral);
+```
+
+Na podstawie analizy powyższego programu wiadomo, że w TypeScript zgodność typów pozwala przypisywać obiekty o bardziej szczegółowej strukturze do zmiennej o bardziej ogólnym typie, jeśli spełniają wymagania tego typu. Problem pojawia się, gdy próbujemy przypisać obiekt o mniejszej liczbie właściwości do zmiennej oczekującej bardziej rozbudowanego typu.
+
+Przykładowo, jeśli mamy typ `Task` z podstawowymi właściwościami (`title`, `description`, `completed`) i rozszerzony typ `AdminTask`, który dodatkowo zawiera `assignedTo` i `priority`, możemy przypisać `AdminTask` do zmiennej typu `Task`, ale odwrotne przypisanie spowoduje błąd.
+
+Aby uniknąć błędów zgodności typów można:
+
+- Używać interfejsów do określania relacji między typami.
+- Wykorzystać rzutowanie (`as`) w sytuacjach, gdy istnieje pewność co do struktury danych.
+- Stosować opcjonalne właściwości (`?`), aby umożliwić większą elastyczność.
+- Korzystać z unii typów (`|`) w przypadkach, gdy zmienna może przyjmować różne struktury.
