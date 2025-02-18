@@ -114,5 +114,13 @@ Przykłady:
 let age: number = 25;                // liczba całkowita
 let name: string | undefined;        // string lub niezainicjalizowana wartość
 let accountStatus: boolean | null;   // boolean lub brak wartości (null)
-
 ```
+
+## Programowanie obiektowe:
+
+- Interfejsy tworzy się za pomocą słowa kluczowego `interface`, definiując strukturę obiektu bez implementacji.
+- Klasy tworzy się za pomocą `class`, umożliwiając definiowanie pól, metod i konstruktorów.
+- Enumy (_enumerations_) to typy w TypeScript, które pozwalają przypisać czytelne nazwy stałym wartościom liczbowym lub tekstowym. Tworzy się je za pomocą `enum`, definiując zestaw nazwanych wartości liczbowych lub tekstowych.
+
+## Wnioskowanie typów:
+

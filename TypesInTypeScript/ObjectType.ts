@@ -34,13 +34,11 @@ class Person implements IPerson
         console.log(`Hello, I'm ${this.name} ${this.surname}!`);
     }
     
-
     assignRole(role: Role): Role 
     {
         this.role = role;
         return role;
     }
-
 }
 
 enum Role 
