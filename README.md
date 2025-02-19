@@ -271,3 +271,27 @@ typeof zmienna === "typ";
 zmienna instanceof Klasa;
 ```
 
+### `Union` oraz `Intersection`:
+
+- `Union` pozwala na użycie jednego z kilku typów, ale nie ich kombinacji. Przykład:
+```typescript
+type PaymentData = creditCard | payPal;
+```
+
+- `Intersection` oznacza, że obiekt musi spełniać wszystkie wymagane typy jednocześnie. Przykład:
+```typescript
+type basePayment = 
+{
+    amount: number;
+};
+
+//creditCard has intersection with basePayment
+type creditCard = basePayment &
+{
+    type: "creditcard";
+    cardNumber: string;
+    expiryDate: string;
+    cvc: string;
+};
+```
+
