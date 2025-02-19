@@ -245,4 +245,29 @@ function functionName(value: unknown): value is Type
 }
 ```
 
+### `instanceof` a `typeof`:
+
+#### `typeof`:
+
+- `typeof` sprawdza typ prymitywny wartości (np. `number`, `string`, `boolean`).
+- Zwraca wynik jako łańcuch znaków (`"number"`, `"string"`, `"boolean"`, itd.).
+- Nie działa dla obiektów i klas – np. `typeof new Date()` zwróci tylko `"object"`, bez szczegółów.
+
+#### `instanceof`:
+
+- `instanceof` sprawdza, czy obiekt jest instancją określonej klasy lub jej podklasy.
+- Nie działa dla typów prymitywnych, bo są one przechowywane jako wartości, a nie instancje obiektów.
+- Umożliwia rozróżnienie np. `Date` i `Array`, czego `typeof` nie potrafi.
+
+Składnia:
+
+```typescript
+// typeof
+
+typeof zmienna === "typ";
+
+//instanceof
+
+zmienna instanceof Klasa;
+```
 
