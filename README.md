@@ -212,9 +212,37 @@ Aby uniknąć błędów zgodności typów można:
 
 ## Asercje typów:
 
-Asercje typów w TypeScript pozwalają wskazać kompilatorowi, jaki typ ma dana wartość, gdy nie jest on poprawnie wywnioskowany. Jest to szczególnie przydatne, gdy pracujemy z dynamicznie generowanymi danymi, takimi jak odpowiedzi API zwracane jako any. W takich sytuacjach możemy użyć kilku różnych technik asercji:
+Asercje typów w TypeScript pozwalają wskazać kompilatorowi, jaki typ ma dana wartość, gdy nie jest on poprawnie wywnioskowany. Przydają się zwłaszcza podczas pracy z dynamicznymi danymi, na przykład odpowiedziami API zwracanymi jako `any`. W takich sytuacjach możemy użyć kilku różnych technik asercji:
 
 - `as` – gdy chcemy jawnie określić typ obiektu zwróconego jako `any` i uniknąć błędów kompilatora.
 - `as const` – gdy mamy stałe dane i chcemy, aby TypeScript traktował je jako literalne wartości zamiast bardziej ogólnych typów.
 - Operator `!` (`non-null assertion`) – gdy jesteśmy pewni, że wartość nie będzie `null` ani `undefined`, ale TypeScript tego nie wie.
 - `satisfies` – gdy chcemy sprawdzić zgodność obiektu z interfejsem, ale jednocześnie zachować dokładne inferencje dla jego wartości.
+
+## Type guards:
+
+### Predykaty typów;
+
+Predykaty typu (`type predicates`) to specjalne zwroty w TypeScript, które pozwalają wskazać kompilatorowi, że dany obiekt ma określony typ. Najczęściej są używane w funkcjach typu `type guard`, które pomagają zawęzić typy i uniknąć błędów.
+
+Wzór predykatu:
+
+```typescript
+parameterName is Type
+```
+
+### `Type guard`:
+
+Funkcja `type guard` to specjalna funkcja, która sprawdza, czy podana wartość spełnia określone kryteria. Jeśli tak – zwraca `true`, jeśli nie – zwraca `false`. Dzięki niej kompilator TS wie, z jakim typem ma do czynienia i nie trzeba używać rzutowania (`as Type`). Funkcja zawsze zwraca `true/false` a jej sygnatura zawiera predykat typu (`value is Type`).
+
+Wzór funkcji `type guard`:
+
+```typescript
+// tutaj predykatem jest 'value is Type'
+function functionName(value: unknown): value is Type 
+{
+    return /* warunek sprawdzający typ */;
+}
+```
+
+
