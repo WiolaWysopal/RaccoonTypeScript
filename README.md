@@ -209,3 +209,12 @@ Aby uniknąć błędów zgodności typów można:
 - Wykorzystać rzutowanie (`as`) w sytuacjach, gdy istnieje pewność co do struktury danych.
 - Stosować opcjonalne właściwości (`?`), aby umożliwić większą elastyczność.
 - Korzystać z unii typów (`|`) w przypadkach, gdy zmienna może przyjmować różne struktury.
+
+## Asercje typów:
+
+Asercje typów w TypeScript pozwalają wskazać kompilatorowi, jaki typ ma dana wartość, gdy nie jest on poprawnie wywnioskowany. Jest to szczególnie przydatne, gdy pracujemy z dynamicznie generowanymi danymi, takimi jak odpowiedzi API zwracane jako any. W takich sytuacjach możemy użyć kilku różnych technik asercji:
+
+- `as` – gdy chcemy jawnie określić typ obiektu zwróconego jako `any` i uniknąć błędów kompilatora.
+- `as const` – gdy mamy stałe dane i chcemy, aby TypeScript traktował je jako literalne wartości zamiast bardziej ogólnych typów.
+- Operator `!` (`non-null assertion`) – gdy jesteśmy pewni, że wartość nie będzie `null` ani `undefined`, ale TypeScript tego nie wie.
+- `satisfies` – gdy chcemy sprawdzić zgodność obiektu z interfejsem, ale jednocześnie zachować dokładne inferencje dla jego wartości.
