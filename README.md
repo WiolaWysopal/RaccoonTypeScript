@@ -294,4 +294,44 @@ type creditCard = basePayment &
     cvc: string;
 };
 ```
+## Łączenie typów:
+
+### `type aliases`:
+
+`Type aliases` to sposób na definiowanie własnych nazw dla typów, co ułatwia czytelność kodu i jego ponowne wykorzystanie. Alias nie tworzy nowego typu, ale jest alternatywną nazwą dla istniejącego. Alias tworzymy za pomocą słowa kluczowego `type`:
+
+```typescript
+// Alias zmiennej
+type ID = string | number;
+
+// Alias obiektu
+type User = 
+{
+  id: ID;
+  name: string;
+  isAdmin: boolean;
+};
+
+```
+
+### `keyof`
+
+`keyof` to operator, który zwraca zbiór kluczy danego typu obiektowego jako unię stringów lub symboli. Wykorzystywany jest przede wszystkim do tworzenia dynamicznych typów.
+
+```typescript
+type User = 
+{
+  id: number;
+  name: string;
+  isAdmin: boolean;
+};
+
+type UserKeys = keyof User;  // "id" | "name" | "isAdmin"
+
+let key: UserKeys;
+key = "id";       // Poprawne
+key = "isAdmin";  // Poprawne
+key = "email";    // Błąd – taki klucz nie istnieje
+
+```
 
