@@ -335,3 +335,31 @@ key = "email";    // Błąd – taki klucz nie istnieje
 
 ```
 
+## Definiowanie parametrów funkcji w TypeScript
+
+W TypeScript możemy określić, czy parametry funkcji są:
+
+- Obowiązkowe
+- Opcjonalne (`?`)
+- Z domyślną wartością (`=` po nazwie typu argumentu)
+
+Przykład konstrukcji:
+
+```typescript
+function cost(price: number, amount: number = 1, taxvalue?: number)
+{
+  if (taxvalue !== undefined)
+        return price*amount + price*amount*taxvalue/100;
+  return price*amount;
+}
+```
+
+Z powyższego przykładu wynika, że:
+- zmienna `price` jest obligatoryjna,
+- zmienna `amount` jest domyślnie przyjmuje wartość `1`,
+- zmienna `taxvalue` nie jest obowiązkowa.
+
+## Przeciążanie funkcji w TypeScript
+
+Przeciążanie funkcji (`function overloading`) na zdefiniowaniu kilku sygnatur funkcji, a następnie jednej implementacji, która obsługuje wszystkie przypadki.
+
