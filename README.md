@@ -363,3 +363,16 @@ Z powyższego przykładu wynika, że:
 
 Przeciążanie funkcji (`function overloading`) na zdefiniowaniu kilku sygnatur funkcji, a następnie jednej implementacji, która obsługuje wszystkie przypadki.
 
+## Typ vs Interface:
+
+- Interfejs (`interface IUser`)
+
+  - Może być rozszerzany (`extends`).
+  - Dobrze nadaje się do struktur obiektowych, zwłaszcza w przypadku układu hierarchicznego.
+  - Preferowany, gdy w przyszłości mają zostać dodane kolejne pola.
+
+- Alias typu (`type User`)
+
+  - Można stosować w uniach (`|`), np. `type User = IUser | null;`.
+  - Bardziej elastyczny, np. może być kombinacją różnych typów (`string | number`).
+  - Lepszy do manipulacji typami.
