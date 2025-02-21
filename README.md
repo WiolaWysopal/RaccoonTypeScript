@@ -427,3 +427,109 @@ Przykład:
 
 **Nadpisywanie metod** (ang. _method overriding_) to mechanizm w programowaniu obiektowym, który pozwala klasie pochodnej na dostarczenie własnej implementacji metody zdefiniowanej w klasie bazowej. W TypeScript nadpisana metoda musi mieć taką samą sygnaturę jak oryginalna, a jeśli klasa bazowa oznaczyła metodę jako `abstract`, to klasa dziedzicząca musi ją zaimplementować. Pozwala to na dostosowanie zachowania klasy do specyficznych potrzeb.
 
+## Dziedziczenie vs Polimorfizm
+
+**Dziedziczenie** to mechanizm, który pozwala jednej klasie (klasie pochodnej) przejąć właściwości i metody innej klasy (klasy bazowej). Dzięki temu możemy ponownie używać kodu i unikać jego powielania.
+
+Przykład:
+
+```typescript
+abstract class Shape
+{
+    private name: string;
+
+    constructor(name: string)
+    {
+        this.name = name;
+    }
+
+    getName()
+    {
+        return this.name;
+    }
+
+    abstract calculateArea(): number;
+    abstract calculatePerimeter(): number;
+    abstract logGeometric(): void;
+}
+
+// Circle dziedziczy po Shape!
+class Circle extends Shape
+{
+    private radius: number = 0.0;
+
+    constructor (name: string, radius: number)
+    {
+        super(name);
+        this.radius = radius;
+    }
+    
+    calculateArea(): number 
+    {
+        return parseFloat((Math.PI*this.radius**2).toFixed(2));
+    }
+
+    calculatePerimeter(): number
+    {
+        return parseFloat((2*Math.PI*this.radius).toFixed(2));
+    }  
+
+    logGeometric(): void 
+    {
+        console.log(`Name: ${this.getName()}, Area: ${this.calculateArea()}, Perimeter: ${this.calculatePerimeter()}`);
+    }
+}
+```
+
+Polimorfizm oznacza, że różne klasy mogą implementować te same metody na różne sposoby. W praktyce oznacza to możliwość nadpisywania metod klasy bazowej w klasie pochodnej.
+
+Przykład:
+
+```typescript
+abstract class Shape
+{
+    private name: string;
+
+    constructor(name: string)
+    {
+        this.name = name;
+    }
+
+    getName()
+    {
+        return this.name;
+    }
+
+    abstract calculateArea(): number;
+    abstract calculatePerimeter(): number;
+    abstract logGeometric(): void;
+}
+
+class Circle extends Shape
+{
+    private radius: number = 0.0;
+
+    constructor (name: string, radius: number)
+    {
+        super(name);
+        this.radius = radius;
+    }
+    
+    // Circle zawiera własne implementacje metod abstrakcyjnych
+    calculateArea(): number 
+    {
+        return parseFloat((Math.PI*this.radius**2).toFixed(2));
+    }
+
+    calculatePerimeter(): number
+    {
+        return parseFloat((2*Math.PI*this.radius).toFixed(2));
+    }  
+
+    logGeometric(): void 
+    {
+        console.log(`Name: ${this.getName()}, Area: ${this.calculateArea()}, Perimeter: ${this.calculatePerimeter()}`);
+    }
+}
+```
+
