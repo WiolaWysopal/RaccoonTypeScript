@@ -416,3 +416,14 @@ Przykład:
     };
 ```
 
+## Modyfikatory dostępu, klasy abstrakcyjne, nadpisywanie metod:
+
+**Modyfikatory** dostępu to mechanizm kontroli widoczności składników klasy (pól, metod, konstruktorów) w TypeScript. Pozwalają one na enkapsulację (ukrywanie wewnętrznych danych klasy i kontrolowanie dostępu do nich) danych i ograniczenie niepożądanego dostępu do wewnętrznych elementów obiektów. Dostępne są trzy modyfikatory: 
+- `public` (domyślny, dostęp wszędzie), 
+- `private` (dostępny tylko w obrębie tej samej klasy),
+- `protected` (dostępny w klasie i jej podklasach). 
+
+**Klasy abstrakcyjne** to klasy, które nie mogą być bezpośrednio instancjonowane i służą jako wzorce dla innych klas (`abstract class`). Mogą zawierać zarówno implementacje metod, jak i metody abstrakcyjne (bez implementacji), które muszą zostać nadpisane w klasach pochodnych. Dzięki temu zapewniają jednolitą strukturę dla klas dziedziczących i wymuszają implementację kluczowych funkcji.
+
+**Nadpisywanie metod** (ang. _method overriding_) to mechanizm w programowaniu obiektowym, który pozwala klasie pochodnej na dostarczenie własnej implementacji metody zdefiniowanej w klasie bazowej. W TypeScript nadpisana metoda musi mieć taką samą sygnaturę jak oryginalna, a jeśli klasa bazowa oznaczyła metodę jako `abstract`, to klasa dziedzicząca musi ją zaimplementować. Pozwala to na dostosowanie zachowania klasy do specyficznych potrzeb.
+
