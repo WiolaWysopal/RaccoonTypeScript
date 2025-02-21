@@ -392,3 +392,27 @@ interface HybridType
   method(): MethodReturnType;      // Metoda
 }
 ```
+
+## Kostruktory TS:
+
+Konstruktor to specjalna metoda w klasie, która jest automatycznie wywoływana podczas tworzenia obiektu, umożliwiając inicjalizację jego pól. W TypeScript konstruktor nazywa się `constructor` i może przyjmować argumenty, mieć wartości domyślne oraz korzystać z modyfikatorów dostępu (`public`, `private`, `readonly`). Możliwe jest definiowanie wielu sygnatur konstruktora (przeciążenia), ale ich implementacja musi być jedna. Konstruktor upraszcza tworzenie obiektów i zapewnia, że wszystkie wymagane dane są poprawnie zainicjalizowane.
+
+w TS można zdefiniować wiele sygnatur konstruktorów (tzw. _constructor overloads_ - przeciążanie konstruktorów), ale można mieć tylko jedną faktyczną implementację konstruktora. TypeScript pozwala na definiowanie wielu wersji sygnatur konstruktora, ale wszystkie muszą być obsłużone w jednej implementacji.
+
+Konstruktor zawsze zwraca instancję klasy.
+
+Przykład:
+```typescript
+    constructor(name: string, surname: string);
+    constructor(name: string, surname: string, email?: string);
+    constructor(name: string, surname: string, email?: string, phoneNumber?: string);
+    
+    constructor(name: string, surname: string, email?: string, phoneNumber?: string)
+    {
+        this.name = name;
+        this.surname = surname;
+        this.email = email ?? "EMAIL UNAVAILABLE";
+        this.phoneNumber = phoneNumber ?? "PHONE UNAVAILABLE";
+    };
+```
+
