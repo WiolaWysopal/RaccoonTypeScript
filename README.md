@@ -376,3 +376,19 @@ Przeciążanie funkcji (`function overloading`) na zdefiniowaniu kilku sygnatur 
   - Można stosować w uniach (`|`), np. `type User = IUser | null;`.
   - Bardziej elastyczny, np. może być kombinacją różnych typów (`string | number`).
   - Lepszy do manipulacji typami.
+
+## Typy hybrydowe:
+
+W TypeScript typy hybrydowe (ang. _hybrid types_) to struktury, które łączą cechy różnych typów, np. funkcji i obiektów jednocześnie. Są przydatne, gdy jeden obiekt powinien mieć zarówno właściwości (jak interfejs), jak i zachowywać się jak funkcja.
+
+Przykład:
+
+```typescript
+interface HybridType 
+{
+  (param: ParamType): ReturnType; // Deklaracja funkcji
+  property1: PropertyType1;       // Właściwość 1
+  property2?: PropertyType2;      // Opcjonalna właściwość
+  method(): MethodReturnType;      // Metoda
+}
+```
