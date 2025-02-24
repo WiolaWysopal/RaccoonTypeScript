@@ -571,3 +571,27 @@ wyswietlLiczbe(42);
 // wyswietlLiczbe("Hello"); ❌
 
 ```
+
+## Dekoratory:
+
+Dekoratory to specjalne funkcje, które modyfikują klasy, metody, właściwości lub parametry w TypeScript. Działają jak nakładki, które dodają nową funkcjonalność bez zmieniania oryginalnego kodu.
+
+Dekorator to zwykła funkcja poprzedzona symbolem `@`, która wykonuje się w czasie definiowania klasy, a nie podczas jej używania.
+
+```typescript
+function Logger(constructor: Function) 
+{
+    console.log(`Zainicjalizowano klasę: ${constructor.name}`);
+}
+
+@Logger
+class MyClass 
+{
+    constructor() 
+    {
+        console.log("Utworzono instancję MyClass");
+    }
+}
+
+```
+
