@@ -533,3 +533,41 @@ class Circle extends Shape
 }
 ```
 
+## Generyki i ograniczenia:
+
+### Generyki:
+
+Generyki to sposób na pisanie uniwersalnego kodu, który może działać z różnymi typami danych. Zamiast pisać osobne wersje tej samej funkcji czy klasy dla różnych typów (np. `int`, `double`, `String`), można użyć jednego rozwiązania, które dostosuje się do potrzeb.
+
+Generyki pozwalają na używanie symboli zastępczych (np. `T`), które potem są zamieniane na konkretne typy podczas użycia kodu. Przykład:
+
+```typescript
+class/function/interface NazwaKlasy<T> 
+{  
+    // Ciało klasy (pola, konstruktory, metody)  
+}
+```
+
+### Ograniczenia:
+
+`Constraints` (ograniczenia) w generykach pozwalają określić, jakie typy mogą być używane jako argumenty generyczne. Dzięki nim można uniknąć błędów i korzystać z określonych właściwości na obiektach.
+
+#### Działanie:
+
+Kiedy używamy generyka `T`, TypeScript domyślnie pozwala na dowolny typ. Jeśli jednak chcemy wymusić, aby `T` spełniał określone warunki (np. był liczbą, stringiem lub obiektem z określonymi właściwościami), możemy użyć słowa kluczowego `extends`.
+
+Przykład:
+
+```typescript
+function wyswietlLiczbe<T extends number>(element: T): void 
+{
+    console.log(element);
+}
+
+// Poprawne
+wyswietlLiczbe(42);  
+
+// Błąd! TypeScript nie pozwoli użyć stringa
+// wyswietlLiczbe("Hello"); ❌
+
+```
