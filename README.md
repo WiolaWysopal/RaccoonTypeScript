@@ -681,3 +681,45 @@ type DiscountedPrice = ReturnType<typeof calculateDiscount>; // number
 ```
 
 **Zastosowanie:** Zapewnienie spójności w miejscach, gdzie operujemy na zwracanej wartości.
+
+## Moduły w TypeScript - `Namespaces`, `Ambient Modules`, `External Modules`:
+
+W TypeScript moduły pomagają organizować kod i ułatwiają jego ponowne wykorzystanie. Istnieją trzy główne sposoby definiowania modułów:
+
+- `Namespaces` (przestrzenie nazw) – stosowane do grupowania powiązanych funkcji, klas i interfejsów w jednym zakresie nazw. Pozwalają uniknąć konfliktów nazw w dużych projektach. Przykład:
+
+```typescript
+namespace MyNamespace 
+{
+    export function greet() 
+    {
+        return "Hello!";
+    }
+}
+console.log(MyNamespace.greet()); // "Hello!"
+```
+
+- `Ambient Modules` – służą do deklarowania modułów zewnętrznych (np. paczek npm), które nie mają dostępnych plików TypeScript. Używane np. w plikach `*.d.ts`. Przykład:
+
+```typescript
+declare module "my-library" 
+{
+    export function doSomething(): void;
+}
+```
+
+- `External Modules` – to standardowe moduły TypeScript oparte na systemie `ES6` (`import` i `export`). Pozwalają na podział kodu na osobne pliki i ich łatwe użycie. Przykład:
+
+```typescript
+// Plik utils.ts
+export function add(a: number, b: number) 
+{
+    return a + b;
+}
+
+// Plik main.ts
+import { add } from "./utils";
+console.log(add(2, 3)); // 5
+
+```
+
