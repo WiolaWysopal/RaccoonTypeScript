@@ -1,6 +1,9 @@
-function LogClassInformation<T extends { new (...args: any[]): {} }>(constructor: T): T {
-    return class extends constructor {
-        constructor(...args: any[]) {
+function LogClassInformation<T extends { new (...args: any[]): {} }>(constructor: T): T 
+{
+    return class extends constructor 
+    {
+        constructor(...args: any[]) 
+        {
             super(...args);
             console.log(`NEW INSTANCE OF ${constructor.name} HAS BEEN CREATED WITH VALUES:`, args);
         }
@@ -25,24 +28,28 @@ function CountCalls(target: any, propertyKey: string, descriptor: PropertyDescri
 }
 
 @LogClassInformation
-class Order {
+class Order 
+{
     private user: string;
     private orders: number;
     private name: string;
 
-    constructor(user: string, orders: number, name: string) {
+    constructor(user: string, orders: number, name: string) 
+    {
         this.user = user;
         this.orders = orders;
         this.name = name;
     }
 
     @CountCalls
-    placeAnOrder(): string {
+    placeAnOrder(): string 
+    {
         return `User ${this.user} has ordered: ${this.orders} items`;
     }
 
     @CountCalls
-    logRecord(): string {
+    logRecord(): string 
+    {
         return `User ${this.user} has ordered: ${this.orders} items of ${this.name}`;
     }
 }

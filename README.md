@@ -595,3 +595,18 @@ class MyClass
 
 ```
 
+## Typy zaawansowane:
+
+*Typy zaawansowane* to mechanizmy w TypeScript umożliwiające dynamiczną manipulację strukturą i właściwościami typów, takie jak mapowane, warunkowe, szablonowe i rekurencyjne typy. Pozwalają one na większą elastyczność i bezpieczeństwo typowania, dostosowując definicje danych do zmieniających się wymagań aplikacji.
+
+- **Mapowane typy (_Mapped Types_):**
+    - Pozwalają na tworzenie nowych typów na podstawie istniejących poprzez iterację po ich kluczach.
+    - Mogą zmieniać modyfikatory (`readonly`, `optional`) lub transformować wartości.
+- **Typy warunkowe (_Conditional Types_):**
+    - Umożliwiają dynamiczne przypisanie typu w zależności od spełnienia określonego warunku.
+    - Mają postać `T extends U ? X : Y`, gdzie zwracany typ zależy od tego, czy `T` spełnia `U`.
+- **Typy szablonowe (_Template Literal Types_):**
+    - Pozwalają na konstruowanie dynamicznych kluczy lub wartości na podstawie innych typów.
+- **Typy rekurencyjne (*Recursive Types*):**
+    - Stosowane do reprezentowania struktur zagnieżdżonych, takich jak drzewa czy obiekty zawierające inne obiekty o podobnej strukturze.
+
