@@ -610,3 +610,74 @@ class MyClass
 - **Typy rekurencyjne (*Recursive Types*):**
     - Stosowane do reprezentowania struktur zagnieżdżonych, takich jak drzewa czy obiekty zawierające inne obiekty o podobnej strukturze.
 
+## Typy Użyteczne:
+
+**Utility Types w TypeScript dla E-commerce**
+
+W TypeScript _utility types_ pozwalają dynamicznie modyfikować struktury danych, co jest szczególnie przydatne w aplikacjach e-commerce, gdzie różne operacje mogą wymagać różnych zestawów pól w obiektach.
+
+### 1. **Pick** – wybór tylko wybranych pól
+Gdy należy utworzyć nowy typ zawierający jedynie określone właściwości, np. dla podsumowania koszyka zakupowego:
+```typescript
+interface Product {
+  id: number;
+  name: string;
+  price: number;
+  description: string;
+  stock: number;
+}
+
+type CartSummary = Pick<Product, "id" | "name" | "price">;
+```
+
+**Zastosowanie:** Przekazywanie tylko istotnych informacji o produkcie do podsumowania koszyka.
+
+### 2. **Omit** – Usunięcie wybranych pól
+
+Jeśli należy stworzyć typ bez pewnych właściwości, np. wersję produktu bez ceny:
+```typescript
+type ProductWithoutPrice = Omit<Product, "price">;
+```
+
+**Zastosowanie:** Może być użyte w edytorze produktów, gdy cena jest ustalana osobno.
+
+### 3. **Extract** – Wybór wspólnych wartości z dwóch typów
+
+Jeśli mamy różne role użytkowników i chcemy wybrać tylko wspólne wartości:
+```typescript
+type AdminRoles = "manage_orders" | "manage_users" | "edit_products";
+type UserRoles = "view_products" | "manage_orders";
+
+type SharedRoles = Extract<AdminRoles, UserRoles>; // "manage_orders"
+```
+**Zastosowanie:** Przy sprawdzaniu wspólnych uprawnień dla różnych ról użytkowników.
+
+### 4. **Exclude** – Usunięcie wartości z typu
+Jeśli chcemy usunąć pewne wartości z typu, np. uprawnienia, które nie są dostępne dla klienta:
+```typescript
+type UserPermissions = "view_products" | "purchase" | "refund";
+type NoRefundPermissions = Exclude<UserPermissions, "refund">;
+```
+
+**Zastosowanie:** Ograniczanie dostępu do niektórych funkcji w interfejsie użytkownika.
+
+### 5. **NonNullable** – Usunięcie `null` i `undefined`
+Jeśli istnieje typ, który może przyjmować `null` lub `undefined`, ale należy wyszukać pewną wartość:
+```typescript
+type Stock = number | null | undefined;
+type AvailableStock = NonNullable<Stock>; // number
+```
+
+**Zastosowanie:** Upewnienie się, że ilość produktu w magazynie jest zawsze określona.
+
+### 6. **ReturnType** – Pobranie typu zwracanego przez funkcję
+Jeśli istnieje funkcja obliczającą rabat i chcemy uzyskać jej wynikowy typ:
+```typescript
+function calculateDiscount(price: number): number {
+  return price * 0.9;
+}
+
+type DiscountedPrice = ReturnType<typeof calculateDiscount>; // number
+```
+
+**Zastosowanie:** Zapewnienie spójności w miejscach, gdzie operujemy na zwracanej wartości.
