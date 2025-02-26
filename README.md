@@ -773,6 +773,12 @@ console.log("hello_world".toCamelCase()); // helloWorld
 
 **Bundler** to narzędzie, które łączy wiele plików kodu źródłowego (np. TypeScript, JavaScript, CSS) w jeden plik lub kilka zoptymalizowanych plików, które mogą być łatwo uruchomione w przeglądarce lub na serwerze.
 
+### Kryteria wyboru Bundlera:
+
+- `esbuild` - dla szybkodziałających, prostych aplikacji.
+- `Webpack` - dla większych i rozwijających się aplikacji.
+- `Rollup` - dla tworzenia bibliotek.
+
 ### Kroki potrzebne aby skonfigurować Bundler:
 
 1. Zainstaluj `esbuild` poleceniem:
