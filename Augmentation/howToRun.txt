@@ -1,0 +1,5 @@
+Ponieważ obiekt window istnieje tylko w przeglądarce, uruchomienie go w Node spowoduje błąd: ReferenceError: window is not defined. Aby sprawdzić działanie programu należy utworzyć plik HTML zawierający zaciągnięty kod .ts skompilowany do .js (polecenie tsc augmentation.ts), następnie otwierając ten plik w przeglądarce (tutaj: augmentation.html). Będąc w przeglądarce należy udać się do konsoli (najczęściej F12 > Console) i zapoznać się z efektem uruchomienia programu. Dla kodu zamieszczonego w folerze Augmentation powinniśmy otrzymać następujące dane:
+
+event tracked: page_view, data augmentation.js:7:21
+event tracked: click, data augmentation.js:7:21
+Total events tracked: 2

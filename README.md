@@ -723,3 +723,49 @@ console.log(add(2, 3)); // 5
 
 ```
 
+## Augmentacja:
+
+W TypeScript augmentacja (_augmentation_) odnosi się do rozszerzania istniejących typów, interfejsów lub modułów o dodatkowe właściwości lub metody. Jest to przydatne, gdy chcesz dodać nowe funkcje do istniejących definicji, np. rozszerzyć interfejsy wbudowane w TypeScript lub dodane przez zewnętrzne biblioteki.
+
+- Augmentacja interfejsów:
+
+```typescript
+interface Window 
+{
+    myCustomProperty?: string;
+}
+
+window.myCustomProperty = "Hello, world!";
+```
+
+- Augmentacja modułów:
+
+```typescript
+declare module "express" 
+{
+    interface Request 
+    {
+        user?: { id: string; name: string };
+    }
+}
+```
+
+- Augmentacja typów wbudowanych:
+
+```typescript
+interface String 
+{
+    toCamelCase(): string;
+}
+
+// prototype - jeśli chcę, aby owa metoda była dostępna dla wszystkich obiektów danego typu (np. dla każdego `String`, `Array`, `Number`).
+String.prototype.toCamelCase = function () 
+{
+    return this.replace(/([-_][a-z])/g, (group) =>
+        group.toUpperCase().replace("-", "").replace("_", "")
+    );
+};
+
+console.log("hello_world".toCamelCase()); // helloWorld
+```
+
