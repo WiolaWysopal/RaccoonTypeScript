@@ -592,8 +592,17 @@ class MyClass
         console.log("Utworzono instancję MyClass");
     }
 }
-
 ```
+### Tabela opisująca miejsca umiejscowienia dekoratorów w TS:
+
+| **Metody**                | **Argumenty**                           | **Deskryptor (PropertyDescriptor)**    | **Miejsce dekoratora**             |
+|---------------------------|-----------------------------------------|----------------------------------------|------------------------------------|
+| **target, propertyKey, descriptor** | Deskryptor metody                  | Tak                                    | Nad definicją metody               |
+| **Getter/Setter**          | target, propertyKey, descriptor         | Tak                                    | Nad definicją gettera/settera     |
+| **Właściwości**            | target, propertyKey                     | Nic (undefined)                        | Nad definicją właściwości          |
+| **Klasy**                  | constructor                             | Nową (lub zmodyfikowaną) klasę          | Nad definicją klasy                |
+| **Parametry**              | target, propertyKey, parameterIndex     | Nic (undefined)                        | Nad deklaracją parametru w metodzie |
+
 
 ## Typy zaawansowane:
 
