@@ -1,0 +1,8 @@
+{
+    "dependencies": {
+        "example-lib": "file:./example-lib"
+    },
+    "devDependencies": {
+        "@types/node": "^22.13.10"
+    }
+}

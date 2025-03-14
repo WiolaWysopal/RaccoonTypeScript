@@ -1,0 +1,12 @@
+{
+    "compilerOptions": {
+      "moduleResolution": "node",
+      "module": "CommonJS",
+      "esModuleInterop": true,
+      "strict": true,
+      "typeRoots": ["./node_modules/@types"],
+      "allowJs": true
+    },
+    "include": ["./app.ts", "./example-lib.d.ts"]
+  }
+  
